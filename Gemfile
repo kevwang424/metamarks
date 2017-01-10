@@ -9,6 +9,8 @@ end
 # styles
 gem 'materialize-sass'
 
+gem 'watson-api-client'
+
 # paperclip
 gem "paperclip", "~> 5.0.0"
 
