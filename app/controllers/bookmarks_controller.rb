@@ -9,7 +9,7 @@ class BookmarksController < ApplicationController
   end
 
   def new
-    @bookmark = Bookmark.new
+    @bookmark = Bookmark.new(url: params[:url])
   end
 
   def generate_suggested_tags
