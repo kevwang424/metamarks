@@ -24,7 +24,8 @@
   <% @popular_bookmarks.each do |bookmark| %>
     <div class="col s12 m4">
       <div class="card-panel indigo lighten-2 center-align hoverable">
-        <%= link_to bookmark[0], bookmark[0], :target => "_blank", class: "card-content black-text truncate" %>
+        <%= link_to bookmark[0], bookmark[0], target: "_blank", class: "card-content black-text truncate", title: "Go to site" %>
+        <%= link_to "+", {controller: "bookmarks", action: "new", url: bookmark[0]}, method: :get, class: "btn-floating green", title: "Add to own list" %>
       </div>
     </div>
   <% end %>
