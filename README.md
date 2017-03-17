@@ -1,4 +1,4 @@
-#MetaMarks
+# MetaMarks
 
 MetaMarks is a **Rails** web application that allows users to add value to their bookmarks.
 
