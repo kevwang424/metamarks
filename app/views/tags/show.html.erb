@@ -1,17 +1,20 @@
-<h3><%= @tag.name %></h3>
+<h3>Tag: "<%= @tag.name %>"</h3>
 
 <div class="row">
-
-
-<% @bookmarks.each do |bookmark| %>
-
-
-      <div class="col s12 m4">
-        <div class="card-panel grey lighten-2 center-align hoverable">
-          <%= link_to bookmark.url, bookmark_path(bookmark), class: "card-content black-text truncate" %>
+  <% @bookmarks.each do |bookmark| %>
+        <div class="col s12 m4">
+          <div class="card small hoverable">
+            <div class="card-image">
+              <%= image_tag bookmark.image_url %>
+              <span class="card-title"></span>
+            </div>
+            <div class="card-content">
+              <p><%= bookmark.description %></p>
+            </div>
+            <div class="card-action truncate">
+              <%= link_to "See Bookmark", bookmark_path(bookmark) %>
+            </div>
+          </div>
         </div>
-      </div>
-
-<% end %>
-
+  <% end %>
 </div>

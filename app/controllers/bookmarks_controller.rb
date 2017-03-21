@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class BookmarksController < ApplicationController
   before_action :authenticate_user
   before_action :set_bookmark, only: [:edit, :update, :show, :destroy]
@@ -13,7 +15,8 @@ class BookmarksController < ApplicationController
   end
 
   def generate_suggested_tags
-    if params[:bookmark][:url].blank?
+    if params[:bookmark][:url].blank? || !valid_url?(params[:bookmark][:url])
+      flash[:notice] = "Please enter a valid URL"
       redirect_to new_bookmark_path
     else
       @bookmark = Bookmark.new(bookmark_params)
@@ -80,4 +83,12 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def valid_url?(url)
+    begin
+      if open(url, :allow_redirections => :all).status[1] == "OK"
+        return true
+      end
+    rescue => e
+    end
+  end
 end
