@@ -3,23 +3,19 @@
 <%= form_for @bookmark, html: { multipart: true } do |f| %>
 
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, placeholder: "Please enter title" %>
 
   <%= f.label :all_tags %>
-  <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %>
+  <%= f.text_field :all_tags, placeholder: "Please enter tags separated by commas (optional)" %>
 
   <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, placeholder: "Please enter description (optional)" %>
 
   <%= f.label :notes %>
-  <%= f.text_field :notes %>
-
-
-
-        <%= f.label :pictures, "upload images" %>
-        <%= file_field_tag "images[]", type: :file, multiple: true %>
-
-
+  <%= f.text_field :notes, placeholder: "Please enter any notes (optional)" %>
+<!-- 
+  <%= f.label :pictures, "upload images" %>
+  <%= file_field_tag "images[]", type: :file, multiple: true %> -->
 
   <%= f.submit class: "waves-effect waves-light btn" %>
 <% end %>

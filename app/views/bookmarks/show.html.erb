@@ -1,37 +1,34 @@
-<h3><%=@bookmark.title%></h3>
-<h6><%=@bookmark.description%></h6>
-<div class="link-container">
-    <% if !@bookmark.image_url.blank? %>
-      <%= link_to @bookmark.url, :target => "_blank" do %>
-        <%= image_tag @bookmark.image_url, class: "link-img-size" %>
+<div class="container text-align">
+  <h3><%=@bookmark.title%></h3>
+  <h6><%=@bookmark.description%></h6>
+  <div class="link-container">
+      <% if !@bookmark.image_url.blank? %>
+        <%= link_to @bookmark.url, :target => "_blank" do %>
+          <%= image_tag @bookmark.image_url, class: "link-img-size" %>
+        <% end %>
+      <% else %>
+        <p><%= link_to @bookmark.url, @bookmark.url, :target => "_blank" %></p>
       <% end %>
-    <% else %>
-      <p><%= link_to @bookmark.url, @bookmark.url, :target => "_blank" %></p>
-    <% end %>
 
-    <section class="images-uploaded">
-      <% @bookmark.pictures.each do |picture| %>
-      <%= image_tag picture.image.url(:thumb)  %>
-      <% end %>
-    </section>
-    
-     <div class="tags_wrapper">
-      A link about:
-      <% @bookmark.tags.each do |tag| %>
-        <span class="tag"><%= link_to tag.name, tag_path(tag) %></span>
-      <% end %>
-     </div>
-</div>
-<p>
+      <section class="images-uploaded">
+        <% @bookmark.pictures.each do |picture| %>
+        <%= image_tag picture.image.url(:thumb)  %>
+        <% end %>
+      </section>
 
-</p>
+       <div class="tags_wrapper">
+        Tags:
+        <% @bookmark.tags.each do |tag| %>
+          <span class="tag"><%= link_to tag.name, tag_path(tag) %></span>
+        <% end %>
+       </div>
+  </div>
+  <p></p>
+  <p><h5>Notes:</h5> <%=@bookmark.notes %></p>
 
-<p>Notes: <%=@bookmark.notes %></p>
-
-<div class="buttons-wrapper">
-
-    <%= button_to "Back", bookmarks_path, method: 'get', class: "waves-effect waves-light btn"  %>
-    <%= button_to "Edit", edit_bookmark_path(@bookmark), method: 'get', class: "waves-effect waves-light btn"  %>
-    <%= button_to "Delete", bookmark_path(@bookmark), method: 'delete', class: "waves-effect waves-light btn delete-btn"  %>
-
+  <div class="buttons-wrapper">
+      <%= button_to "Back", bookmarks_path, method: 'get', class: "waves-effect waves-light btn"  %>
+      <%= button_to "Edit", edit_bookmark_path(@bookmark), method: 'get', class: "waves-effect waves-light btn"  %>
+      <%= button_to "Delete", bookmark_path(@bookmark), method: 'delete', class: "waves-effect waves-light btn delete-btn"  %>
+  </div>
 </div>

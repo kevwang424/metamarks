@@ -6,12 +6,12 @@
       <div class="card small hoverable">
         <div class="card-image">
           <%= image_tag bookmark.image_url %>
-          <span class="card-title truncate"></span>
+          <span class="card-title"></span>
         </div>
         <div class="card-content">
           <p><%= bookmark.description %></p>
         </div>
-        <div class="card-action truncate">
+        <div class="card-action">
           <%= link_to "See Bookmark", bookmark_path(bookmark) %>
         </div>
       </div>

@@ -5,6 +5,7 @@ class Bookmark < ApplicationRecord
   has_many :bookmark_tags
   has_many :tags, through: :bookmark_tags
   validates :url, presence: true, :url => true
+  validates_format_of :url, :with => /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i
   has_many :pictures,inverse_of: :bookmark, dependent: :destroy
 
   def self.most_popular_bookmarks
